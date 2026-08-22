@@ -4,6 +4,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-display: "Archivo", ui-sans-serif, sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, sans-serif;
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-crimson: var(--crimson);
+  --color-crimson-foreground: var(--crimson-foreground);
+  --color-emerald: var(--emerald);
+}
+
+
 /*
  * Design system definition.
  *
