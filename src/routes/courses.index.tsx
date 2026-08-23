@@ -3,7 +3,7 @@ import { Clock, User, ArrowRight } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
 import { categories, coursesByCategory, instructors } from "@/lib/courses";
 
-export const Route = createFileRoute("/courses")({
+export const Route = createFileRoute("/courses/")({
   head: () => ({
     meta: [
       { title: "Cybersecurity Course Catalog | OMOS Technologies" },
