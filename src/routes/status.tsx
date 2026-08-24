@@ -4,7 +4,9 @@ import { useState } from "react";
 import { z } from "zod";
 import { Loader2, Search } from "lucide-react";
 import { SiteShell } from "@/components/site-shell";
-import { enrollmentStatuses, statusMeta } from "@/lib/courses";
+import { enrollmentStatuses } from "@/lib/courses";
+
+const statusOrder = ["submitted", "in_review", "accepted", "enrolled", "declined"] as const;
 import { getEnrollmentStatus } from "@/lib/enrollments.functions";
 
 const searchSchema = z.object({
@@ -75,7 +77,7 @@ function StatusPage() {
   };
 
   const currentMeta = application
-    ? statusMeta[application.status] ?? statusMeta.submitted
+    ? (enrollmentStatuses[application.status] ?? enrollmentStatuses["submitted"])
     : null;
 
   return (
