@@ -119,8 +119,8 @@ function EnrollPage() {
           </h1>
           <p className="mt-3 text-foreground/70">
             Thank you, {values.fullName.split(" ")[0]}. Your application for{" "}
-            <strong>{selectedCourse?.title}</strong> is with the admissions team. A confirmation is on
-            its way to {values.email}.
+            <strong>{selectedCourse?.title}</strong> is with the admissions team. We will contact you
+            at {values.email} as your application progresses.
           </p>
           <div className="mt-8 border-t-4 border-secondary bg-card p-6 shadow-sm">
             <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground">
@@ -324,7 +324,7 @@ function Field({
   children,
 }: {
   label: string;
-  error?: string;
+  error: string | undefined;
   htmlFor: string;
   children: React.ReactNode;
 }) {
