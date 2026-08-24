@@ -182,18 +182,6 @@ function Index() {
           </div>
         </section>
       </main>
-
-      <footer className="bg-primary py-10 text-primary-foreground">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-5 text-center">
-          <div className="flex items-center gap-2">
-            <Globe className="size-5 text-secondary" />
-            <span className="font-display text-lg font-bold">www.omostechnologies.com</span>
-          </div>
-          <p className="text-sm text-primary-foreground/60">
-            © {new Date().getFullYear()} OMOS Technologies. Cybersecurity training and certification.
-          </p>
-        </div>
-      </footer>
-    </div>
+    </SiteShell>
   );
 }
