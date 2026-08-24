@@ -191,7 +191,7 @@ function StatusPage() {
                       >
                         {index + 1}
                       </span>
-                      {index < enrollmentStatuses.length - 1 && (
+                      {index < statusOrder.length - 1 && (
                         <span
                           className={`w-0.5 flex-1 ${index < currentIndex ? "bg-primary" : "bg-border"}`}
                         />
@@ -203,9 +203,11 @@ function StatusPage() {
                           isCurrent ? "text-crimson" : reached ? "text-primary" : "text-muted-foreground"
                         }`}
                       >
-                        {statusMeta[status].label}
+                        {enrollmentStatuses[status]?.label}
                       </p>
-                      <p className="mt-0.5 text-sm text-foreground/70">{statusMeta[status].description}</p>
+                      <p className="mt-0.5 text-sm text-foreground/70">
+                        {enrollmentStatuses[status]?.description}
+                      </p>
                       {isCurrent && (
                         <p className="mt-1 text-xs text-muted-foreground">
                           Updated {new Date(application.updated_at).toLocaleDateString("en-GB", {
