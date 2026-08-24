@@ -104,16 +104,22 @@ function Index() {
             </h2>
           </div>
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {catalog.map((group) => (
-              <div key={group.title} className="border-t-4 border-primary bg-card p-5 shadow-sm">
+            {categories.map((group) => (
+              <div key={group.slug} className="border-t-4 border-primary bg-card p-5 shadow-sm">
                 <h3 className="font-display text-base font-bold uppercase tracking-wide text-primary">
                   {group.title}
                 </h3>
                 <ul className="mt-4 space-y-2">
-                  {group.items.map((item) => (
-                    <li key={item} className="flex gap-2 text-sm text-foreground/80">
+                  {coursesByCategory(group.slug).map((course) => (
+                    <li key={course.slug} className="flex gap-2 text-sm text-foreground/80">
                       <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald" />
-                      <span>{item}</span>
+                      <Link
+                        to="/courses/$slug"
+                        params={{ slug: course.slug }}
+                        className="hover:text-crimson hover:underline"
+                      >
+                        {course.title}
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -161,12 +167,12 @@ function Index() {
             you through course selection and payment.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <a
-              href="https://www.omostechnologies.com"
+            <Link
+              to="/enroll"
               className="inline-flex items-center gap-2 bg-primary px-8 py-4 font-display text-lg font-bold uppercase text-primary-foreground transition-colors hover:bg-primary/90"
             >
               Register online <ArrowRight className="size-5" />
-            </a>
+            </Link>
             <a
               href="mailto:admissions@omostechnologies.com"
               className="inline-flex items-center gap-2 border-2 border-primary px-8 py-4 font-display text-lg font-bold uppercase text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
