@@ -161,7 +161,7 @@ function StatusPage() {
                     {application.full_name} · {application.mode}
                   </p>
                 </div>
-                <span className={`border px-3 py-1.5 font-display text-sm font-bold uppercase ${currentMeta.badgeClass}`}>
+                <span className="border-2 border-primary bg-primary/5 px-3 py-1.5 font-display text-sm font-bold uppercase text-primary">
                   {currentMeta.label}
                 </span>
               </div>
@@ -171,8 +171,10 @@ function StatusPage() {
             </div>
 
             <ol className="p-6">
-              {enrollmentStatuses.map((status, index) => {
-                const currentIndex = enrollmentStatuses.indexOf(application.status);
+              {statusOrder.map((status, index) => {
+                const currentIndex = statusOrder.indexOf(
+                  (application.status as (typeof statusOrder)[number]) ?? "submitted",
+                );
                 const reached = index <= currentIndex;
                 const isCurrent = index === currentIndex;
                 return (
