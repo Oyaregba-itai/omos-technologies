@@ -324,7 +324,7 @@ function Field({
   children,
 }: {
   label: string;
-  error?: string;
+  error: string | undefined;
   htmlFor: string;
   children: React.ReactNode;
 }) {
