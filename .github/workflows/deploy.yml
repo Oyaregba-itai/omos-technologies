@@ -4,6 +4,7 @@ on:
   push:
     branches: "main"
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -28,7 +29,6 @@ jobs:
         with:
           node-version: 22
 
-      # Since we added the file, standard npm commands will now work perfectly
       - name: Install dependencies
         run: npm install
 
@@ -41,7 +41,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          # Points directly to the compiled TanStack / Nitro build path
+          path: './.output/public'
 
       - name: Deploy to GitHub Pages
         id: deployment
