@@ -34,6 +34,9 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+          # Forces TanStack / Nitro to build as static files instead of an SSR server bundle
+          NITRO_PRESET: static
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -41,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Points directly to the compiled TanStack / Nitro build path
+          # Points directly to the compiled static assets directory
           path: './.output/public'
 
       - name: Deploy to GitHub Pages
