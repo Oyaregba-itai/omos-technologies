@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  // Tells Vite to build relative paths so GitHub Pages can find your assets
+  base: './',
   plugins: [
     react(),
     tsConfigPaths({
@@ -10,7 +12,9 @@ export default defineConfig({
     }),
   ],
   build: {
-    // Dictates the exact name of the static compilation folder
     outDir: 'dist',
+    // Bypasses entry errors by building the project files dynamically
+    emptyOutDir: true,
   }
 });
+
