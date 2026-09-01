@@ -35,7 +35,6 @@ jobs:
         run: npm run build
 
       - name: Create Fallback Router
-        # Ensures your client routing works natively on a static server
         run: |
           if [ -d "./.output/public" ]; then
             cp ./.output/public/index.html ./.output/public/404.html
