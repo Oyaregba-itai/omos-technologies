@@ -4,7 +4,6 @@ on:
   push:
     branches: "main"
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -28,8 +27,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
 
+      # Since we added the file, standard npm commands will now work perfectly
       - name: Install dependencies
         run: npm install
 
