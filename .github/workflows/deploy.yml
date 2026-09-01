@@ -34,13 +34,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Create Fallback Router
-        # Standard SPA rule: copies index.html to 404.html to protect nested URL paths on refresh
-        run: |
-          if [ -d "./dist" ]; then
-            cp ./dist/index.html ./dist/404.html
-          fi
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
