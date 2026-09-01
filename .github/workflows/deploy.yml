@@ -4,7 +4,6 @@ on:
   push:
     branches: "main"
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -34,9 +33,13 @@ jobs:
 
       - name: Build project
         run: npm run build
-        env:
-          # Forces TanStack / Nitro to build as static files instead of an SSR server bundle
-          NITRO_PRESET: static
+
+      - name: Create Fallback Router
+        # Standard SPA rule: copies index.html to 404.html to protect nested URL paths on refresh
+        run: |
+          if [ -d "./dist" ]; then
+            cp ./dist/index.html ./dist/404.html
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -44,8 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Points directly to the compiled static assets directory
-          path: './.output/public'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
