@@ -36,8 +36,8 @@ jobs:
 
       - name: Create Fallback Router
         run: |
-          if [ -d "./.output/public" ]; then
-            cp ./.output/public/index.html ./.output/public/404.html
+          if [ -d "./dist/client" ] && [ -f "./dist/client/index.html" ]; then
+            cp ./dist/client/index.html ./dist/client/404.html
           fi
 
       - name: Setup Pages
@@ -46,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './.output/public'
+          path: './dist/client'
 
       - name: Deploy to GitHub Pages
         id: deployment
