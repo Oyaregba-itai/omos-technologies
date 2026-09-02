@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { Shield, Globe } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -22,15 +22,14 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </Link>
           <nav className="hidden items-center gap-7 text-sm font-semibold uppercase tracking-wide md:flex">
             {navLinks.map((link) => (
-              <Link
+              <NavLink
                 key={link.to}
                 to={link.to}
-                activeProps={{ className: "text-secondary" }}
-                activeOptions={{ exact: link.to === "/" }}
-                className="hover:text-secondary"
+                end={link.to === "/"}
+                className={({ isActive }) => (isActive ? "text-secondary" : "hover:text-secondary")}
               >
                 {link.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
           <Link

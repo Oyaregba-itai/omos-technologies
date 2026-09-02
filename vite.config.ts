@@ -1,17 +1,22 @@
+import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
-import { tanstackStart } from '@tanstack/react-start/plugin/vite';
-import tsConfigPaths from 'vite-tsconfig-paths';
+import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  plugins: [
-    tanstackStart({
-      // Forces the framework to generate plain static files for hosts like GitHub Pages
-      deploymentPreset: 'github-pages',
-    }),
-    tsConfigPaths({
-      projects: ['./tsconfig.json'],
-    }),
-    tailwindcss(),
-  ],
+  base: './',
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  server: {
+    host: '0.0.0.0',
+    port: 4173,
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 4173,
+  },
 });
